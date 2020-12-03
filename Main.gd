@@ -24,9 +24,7 @@ var rainbow_num = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$CanvasLayer/silver_chance.value = silver_chance
-	$CanvasLayer/gold_min.value = gold_min
 	$CanvasLayer/gold_more.value = gold_more
-	$CanvasLayer/rainbow_min.value = rainbow_min
 	$CanvasLayer/rainbow_more.value = rainbow_more
 
 	
@@ -53,14 +51,14 @@ func set_ball(pos):
 				yin.set_position(Vector2(x,y))
 				add_child(yin)
 				pin_arr.append(yin)
-	for i in randi()%gold_more+gold_min:
+	for i in randi()%gold_more:
 		var jin = Jin.instance()
-		jin.set_position(Vector2(randi()%550,800+randi()%700))
+		jin.set_position(Vector2(randi()%600,800+randi()%1200))
 		add_child(jin)
 		pin_arr.append(jin)
-	for i in randi()%rainbow_more+rainbow_min:
+	for i in randi()%rainbow_more:
 		var hong = Hong.instance()
-		hong.set_position(Vector2(randi()%550,1200+randi()%300))
+		hong.set_position(Vector2(randi()%600,1200+randi()%800))
 		add_child(hong)
 		pin_arr.append(hong)
 
@@ -103,19 +101,12 @@ func _on_silver_chance_value_changed(value):
 	silver_chance = int(value)
 	pass # Replace with function body.
 
-func _on_gold_min_value_changed(value):
-	gold_min = int(value)
-	pass # Replace with function body.
 
 
 func _on_gold_more_value_changed(value):
 	gold_more = int(value)
 	pass # Replace with function body.
 
-
-func _on_rainbow_min_value_changed(value):
-	rainbow_min = int(value)
-	pass # Replace with function body.
 
 
 func _on_rainbow_more_value_changed(value):
