@@ -40,29 +40,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="gold_min" type="SpinBox" parent="CanvasLayer"]
-margin_left = 736.335
-margin_top = 55.0007
-margin_right = 810.335
-margin_bottom = 79.0007
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="gold_more" type="SpinBox" parent="CanvasLayer"]
 margin_left = 735.213
 margin_top = 97.6543
 margin_right = 809.213
 margin_bottom = 121.654
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="rainbow_min" type="SpinBox" parent="CanvasLayer"]
-margin_left = 736.335
-margin_top = 139.185
-margin_right = 810.335
-margin_bottom = 163.185
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -86,32 +68,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="CanvasLayer"]
-margin_left = 649.337
-margin_top = 56.3311
-margin_right = 734.337
-margin_bottom = 87.3311
-text = "gold_min"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Label3" type="Label" parent="CanvasLayer"]
 margin_left = 648.002
 margin_top = 98.9727
 margin_right = 733.002
 margin_bottom = 129.973
 text = "gold_more"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label4" type="Label" parent="CanvasLayer"]
-margin_left = 647.043
-margin_top = 141.93
-margin_right = 732.043
-margin_bottom = 172.93
-text = "rainbow_min"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -155,8 +117,6 @@ __meta__ = {
 }
 [connection signal="gui_input" from="." to="." method="_on_main_gui_input"]
 [connection signal="value_changed" from="CanvasLayer/silver_chance" to="." method="_on_silver_chance_value_changed"]
-[connection signal="value_changed" from="CanvasLayer/gold_min" to="." method="_on_gold_min_value_changed"]
 [connection signal="value_changed" from="CanvasLayer/gold_more" to="." method="_on_gold_more_value_changed"]
-[connection signal="changed" from="CanvasLayer/rainbow_min" to="." method="_on_rainbow_min_changed"]
 [connection signal="value_changed" from="CanvasLayer/rainbow_more" to="." method="_on_rainbow_more_value_changed"]
 [connection signal="toggled" from="CanvasLayer/CheckBox" to="." method="_on_CheckBox_toggled"]
