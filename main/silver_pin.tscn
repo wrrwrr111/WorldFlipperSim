@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://main/silver_pin.gd" type="Script" id=1]
+[ext_resource path="res://main/silver_pin.png" type="Texture" id=2]
+[ext_resource path="res://main/silver_back.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 7, 7 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="yin" type="RigidBody2D"]
+scale = Vector2( 2, 2 )
+mode = 1
+contacts_reported = 10
+contact_monitor = true
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 0.785398
+shape = SubResource( 1 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 3 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 2, 2 )
+frames = SubResource( 2 )
+[connection signal="body_entered" from="." to="." method="_on_yin_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_yin_body_exited"]
