@@ -1,13 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://back.png" type="Texture" id=1]
+[ext_resource path="res://wall.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Main.gd" type="Script" id=4]
 
 [node name="main" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 0.280609
-margin_right = 0.28064
+margin_left = -0.349335
+margin_right = 439.651
 margin_bottom = 1024.0
 script = ExtResource( 4 )
 __meta__ = {
@@ -22,4 +23,141 @@ centered = false
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 current = true
+
+[node name="wall" parent="." instance=ExtResource( 2 )]
+
+[node name="wall2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 640, 0 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="silver_chance" type="SpinBox" parent="CanvasLayer"]
+margin_left = 733.422
+margin_top = 11.3472
+margin_right = 860.422
+margin_bottom = 35.3472
+step = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="gold_min" type="SpinBox" parent="CanvasLayer"]
+margin_left = 736.335
+margin_top = 55.0007
+margin_right = 810.335
+margin_bottom = 79.0007
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="gold_more" type="SpinBox" parent="CanvasLayer"]
+margin_left = 735.213
+margin_top = 97.6543
+margin_right = 809.213
+margin_bottom = 121.654
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rainbow_min" type="SpinBox" parent="CanvasLayer"]
+margin_left = 736.335
+margin_top = 139.185
+margin_right = 810.335
+margin_bottom = 163.185
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rainbow_more" type="SpinBox" parent="CanvasLayer"]
+margin_left = 737.458
+margin_top = 182.961
+margin_right = 811.458
+margin_bottom = 206.961
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label1" type="Label" parent="CanvasLayer"]
+margin_left = 644.811
+margin_top = 11.8086
+margin_right = 730.811
+margin_bottom = 36.8086
+text = "silver_chance"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+margin_left = 649.337
+margin_top = 56.3311
+margin_right = 734.337
+margin_bottom = 87.3311
+text = "gold_min"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="CanvasLayer"]
+margin_left = 648.002
+margin_top = 98.9727
+margin_right = 733.002
+margin_bottom = 129.973
+text = "gold_more"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="CanvasLayer"]
+margin_left = 647.043
+margin_top = 141.93
+margin_right = 732.043
+margin_bottom = 172.93
+text = "rainbow_min"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="CanvasLayer"]
+margin_left = 646.522
+margin_top = 184.826
+margin_right = 736.522
+margin_bottom = 215.826
+text = "rainbow_more"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label6" type="Label" parent="CanvasLayer"]
+margin_left = 656.454
+margin_top = 262.182
+margin_right = 741.454
+margin_bottom = 293.182
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckBox" type="CheckBox" parent="CanvasLayer"]
+margin_left = 733.481
+margin_top = 216.481
+margin_right = 757.481
+margin_bottom = 240.481
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+margin_left = 672.603
+margin_top = 221.587
+margin_right = 724.603
+margin_bottom = 235.587
+text = "full auto"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="gui_input" from="." to="." method="_on_main_gui_input"]
+[connection signal="value_changed" from="CanvasLayer/silver_chance" to="." method="_on_silver_chance_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/gold_min" to="." method="_on_gold_min_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/gold_more" to="." method="_on_gold_more_value_changed"]
+[connection signal="changed" from="CanvasLayer/rainbow_min" to="." method="_on_rainbow_min_changed"]
+[connection signal="value_changed" from="CanvasLayer/rainbow_more" to="." method="_on_rainbow_more_value_changed"]
+[connection signal="toggled" from="CanvasLayer/CheckBox" to="." method="_on_CheckBox_toggled"]

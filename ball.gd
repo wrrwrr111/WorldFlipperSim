@@ -31,30 +31,34 @@ func _physics_process(delta):
 	speed += gravity * delta 
 	ori_velocity.y += speed * delta
 	
-	var near_nodes_arr = get_layer_node(200,get_position())
+	var near_nodes_arr = get_layer_node(180,get_position())
 	time_speed = 1
 	for i in near_nodes_arr:
 		if i.collider.type == 'gold' || i.collider.type == 'rainbow':
-			time_speed = 0.3
-	print(time_speed)
+			if(position.y < i.collider.position.y):
+				time_speed = 0.3
 			
 	velocity = ori_velocity * time_speed
 	var collision = move_and_collide(velocity * delta)
 	if collision:
-		if collision.collider.type == 'sliver':
-			ori_velocity = velocity.bounce(collision.normal) * 0.5
-		elif collision.collider.type == 'gold':
-			if(type == 'sliver_ball'):
-				type = 'gold_ball'
-				$AnimatedSprite.play('gold')
-			else:
+		match collision.collider.type:
+			'sliver':
+				ori_velocity = velocity.bounce(collision.normal) * 0.5
+			'gold':
+				if(type == 'sliver_ball'):
+					type = 'gold_ball'
+					$AnimatedSprite.play('gold')
+				else:
+					change_rainbow()
+			'rainbow':
 				change_rainbow()
-		else:
-			change_rainbow()
-			
+			'wall':
+				ori_velocity = velocity.bounce(collision.normal) * 0.5
 		if collision.collider.has_method("hit"):
 			collision.collider.hit()
-	emit_signal('ball_fall',position)
+		
+		
+	emit_signal('ball_fall',self)
 
 
 
