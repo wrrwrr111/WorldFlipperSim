@@ -90,7 +90,7 @@ func _on_ball_fall(ball):
 		text += '\nsilver_num: '+ str(silver_num)
 		text += '\ngold_num: '+ str(gold_num)
 		text += '\nrainbow_num: '+str(rainbow_num)
-		text += '\nrainbow_rate: '+str(rainbow_num/sum)
+		text += '\nrainbow_rate: '+str(float(rainbow_num)/float(sum))
 		$CanvasLayer/Label6.text = text
 		ball.queue_free()
 		if full_auto:
