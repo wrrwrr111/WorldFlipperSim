@@ -18,5 +18,4 @@ func _ready():
 func hit():
 	self.get_parent().remove_child(self)
 
-func get_black():
-	$black.play('black')
+
